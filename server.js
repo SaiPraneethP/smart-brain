@@ -27,6 +27,7 @@ const db = knex({
 app.use(cors())
 app.use(express.json());
 
+app.get("/", (req, res) => {res.send("it's working!")})
 
 app.post('/signin', (req,res)=>{signin.handleSignin(req,res,db,bcrypt)})
 
@@ -39,8 +40,8 @@ app.put('/image',(req,res)=>{image.handleImage(req,res,db)})
 app.post('/imageurl',(req,res)=>{image.handleApiCall(req,res)})
 
 
-app.listen(3004, () => {
-    console.log('App is running on port 3004')
+app.listen(process.env.PORT || 3004, () => {
+    console.log(`App is running on port ${procees.env.PORT}`)
 })
 
 
